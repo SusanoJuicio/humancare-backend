@@ -25,7 +25,6 @@ const productSchema = new Schema(
         toObject: { virtuals: true },
     }
 );
-
 // Método virtual para formatear precio
 productSchema.virtual('formattedPrice').get(function () {
     return `$${this.price.toFixed(2)}`;
