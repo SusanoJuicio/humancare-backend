@@ -12,6 +12,8 @@ const port = process.env.PORT || 5001;
 app.use(cors());
 app.use(express.json());
 
+app.use("/products", productRoutes)
+
 const startServer = async () => {
     try {
         await mongoose.connect(process.env.MONGODB_URI, {});
@@ -22,7 +24,7 @@ const startServer = async () => {
         console.log('🎲 Sample product created:', product);
 
         app.listen(port, () => {
-            console.log(`🚀 Server running on port ${port}`);
+            console.log(`Servidor corriendo en http://localhost:${port}`);
         });
     } catch (error) {
         console.error('❌ Server error:', error);
