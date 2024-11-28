@@ -5,7 +5,8 @@ const userSchema = new mongoose.Schema({
     apellido: { type: String, required: true },
     telefono: { type: String, required: true },
     gmail: { type: String, required: true },
-    dni: { type: String, required: true }
+    dni: { type: String, required: true },
+    password: { type: String, required: true },
 }, { timestamps: true });
 
 export default mongoose.model('User ', userSchema);
