@@ -5,9 +5,9 @@ const productSchema = new Schema(
     {
         name: {
             type: String,
-            required: [true, 'Please add a product name'],
+            required: true,
             trim: true,
-            maxlength: [50, 'Name cannot be more than 50 characters'],
+            maxlength: 50,
         },
         price: {
             type: Number,

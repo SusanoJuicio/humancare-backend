@@ -1,9 +1,10 @@
 import { Router } from 'express';
-import { getProducts, getProduct } from '../controllers/productControllers.js'; // Add .js extension
+import { createUser, getUsers, getUser } from "../controllers/userControllers.js"
 
 const router = Router();
 
-router.route('/').get(getProducts);
-router.route('/:id').get(getProduct);
+// router.route('/').get(getUsers);
+// router.route('/:id').get(getUser);
+router.post("/", createUser)
 
 export default router;
