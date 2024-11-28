@@ -13,7 +13,7 @@ const config = {
             port: process.env.PORT || 5001,
         },
         cors: {
-            origin: 'http://localhost:8080', // Asumiendo Live Server para el cliente
+            origin: 'http://localhost:8080',
         },
     },
     production: {
