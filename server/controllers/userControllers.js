@@ -3,12 +3,16 @@ import bcrypt from 'bcrypt';
 
 export const createUser = async (req, res) => {
     const { nombre, apellido, telefono, gmail, dni, password } = req.body;
-    console.log('createUser  llamado con:', req.body);
+    console.log('createUser  llamado con:', req.body)
 
     try {
         const existingUser = await User.findOne({ gmail });
         if (existingUser) {
             return res.status(400).json({ message: 'El correo electrónico ya está en uso' });
+        }
+        const existingDNI = await User.findOne({ dni });
+        if (existingDNI) {
+            return res.status(400).json({ message: 'El DNI ya está registrado' });
         }
         const encryptedPassword = await bcrypt.hash(password, 10);
         const newUser = new User({

@@ -3,8 +3,8 @@ import dotenv from "dotenv";
 import express from "express";
 import cors from "cors";
 import userRoutes from './server/routes/routes.js';
-import productRoutes from './server/routes/routes.js';
-import { createSampleProduct } from "./server/controllers/productControllers.js"
+// import productRoutes from './server/routes/routes.js';
+// import { createSampleProduct } from "./server/controllers/productControllers.js"
 
 dotenv.config();
 const app = express();
@@ -17,7 +17,7 @@ app.use("/users", userRoutes);
 
 const startServer = async () => {
     try {
-        await mongoose.connect(process.env.MONGODB_URI, {});
+        await mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
         console.log('📦 Connected to MongoDB');
 
         app.listen(port, () => {
