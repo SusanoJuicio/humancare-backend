@@ -1,5 +1,5 @@
 import User from '../models/user.js';
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
 
 export const createUser = async (req, res) => {
     const { nombre, apellido, telefono, gmail, dni, password } = req.body;
@@ -10,10 +10,12 @@ export const createUser = async (req, res) => {
         if (existingUser) {
             return res.status(400).json({ message: 'El correo electrónico ya está en uso' });
         }
+
         const existingDNI = await User.findOne({ dni });
         if (existingDNI) {
             return res.status(400).json({ message: 'El DNI ya está registrado' });
         }
+
         const encryptedPassword = await bcrypt.hash(password, 10);
         const newUser = new User({
             nombre,
@@ -24,7 +26,9 @@ export const createUser = async (req, res) => {
             password: encryptedPassword
         });
 
+        console.log(newUser);
         await User.create(newUser);
+
         res.status(201).json(newUser);
     } catch (error) {
         res.status(400).json({ message: 'Error al crear el usuario', error });
