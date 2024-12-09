@@ -7,7 +7,8 @@ export const purchaseProduct = async (req, res) => {
 
     try {
         // Buscar el producto
-        const product = await Product.findById(productId);
+        const numId = parseInt(productId)
+        const product = await Product.findOne({ customId: numId });
         if (!product) {
             return res.status(404).json({ message: 'Producto no encontrado' });
         }
@@ -28,7 +29,7 @@ export const purchaseProduct = async (req, res) => {
         }
 
         // Agregar la compra al array de compras del usuario
-        user.purchases.push({ productId, quantity });
+        user.purchases.push({ numId, quantity });
         await user.save();
 
         res.status(200).json({ message: 'Compra realizada con éxito', product });
