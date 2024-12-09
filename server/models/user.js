@@ -11,7 +11,8 @@ const userSchema = new mongoose.Schema({
     purchases: [{
         productId: { type: mongoose.Schema.Types.ObjectId, ref: 'Product' },
         quantity: { type: Number, required: true }
-    }]
+    }],
+    nivel: { type: Number, default: 1 }
 }, { timestamps: true });
 
 export default mongoose.model('User ', userSchema);

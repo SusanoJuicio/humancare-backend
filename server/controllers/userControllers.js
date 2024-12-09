@@ -23,7 +23,8 @@ export const createUser = async (req, res) => {
             telefono,
             gmail,
             dni,
-            password: encryptedPassword
+            password: encryptedPassword,
+            nivel: 1
         });
 
         console.log(newUser);
@@ -62,6 +63,21 @@ export const getUsers = async (req, res) => {
         res.json({ message: 'Error getting Users' });
     }
 }
+
+export const updateUserLevel = async (req, res) => {
+    const { id } = req.params;
+    const { nivel } = req.body;
+
+    try {
+        const user = await User.findByIdAndUpdate(id, { nivel }, { new: true });
+        if (!user) {
+            return res.status(404).json({ message: 'Usuario no encontrado' });
+        }
+        res.json({ message: 'Nivel actualizado', user });
+    } catch (error) {
+        res.status(400).json({ message: 'Error al actualizar el nivel', error });
+    }
+};
 
 export const getUser = async (req, res) => {
     try {
