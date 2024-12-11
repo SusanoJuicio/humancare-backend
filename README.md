@@ -60,6 +60,10 @@ Este backend fue desarrollado por:
 - [Maxi Martinez](https://github.com/maxiluma18)
 - [Iván Acuña](https://github.com/SusanoJuicio)
 - [Talia Ojeda](https://github.com/TaliaIvonneOjeda1)
+- 
+## Frontend
+
+El frontend del proyecto está disponible en el siguiente repositorio: [Human Care Frontend](https://github.com/SusanoJuicio/human-care-repo)
 
 ## Licencia
 
