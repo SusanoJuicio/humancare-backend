@@ -5,7 +5,7 @@ const productSchema = new mongoose.Schema({
     customId: {
         type: Number,
         required: true,
-        unique: true, // Asegúrate de que sea único
+        unique: true,
     },
     name: {
         type: String,

@@ -18,7 +18,6 @@ app.use("/users", userRoutes);
 const startServer = async () => {
     try {
         await mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
-        console.log('📦 Connected to MongoDB');
 
         app.listen(port, () => {
             console.log(`Servidor corriendo en http://localhost:${port}`);
