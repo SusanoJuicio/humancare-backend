@@ -3,7 +3,6 @@ import bcrypt from 'bcryptjs';
 
 export const createUser = async (req, res) => {
     const { nombre, apellido, telefono, gmail, dni, password } = req.body;
-    console.log('createUser  llamado con:', req.body)
 
     try {
         const existingUser = await User.findOne({ gmail });
@@ -27,7 +26,6 @@ export const createUser = async (req, res) => {
             nivel: 1
         });
 
-        console.log(newUser);
         await User.create(newUser);
 
         res.status(201).json(newUser);
